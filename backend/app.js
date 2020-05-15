@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config(); // Manage .env file
 
 const stuffRoutes = require('./routes/stuff');
+const userRoutes = require('./routes/user');
 
 mongoose.connect('mongodb+srv://AntoineLibert:'+ process.env.PASSWORD +'@cluster0-zwssb.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -24,5 +25,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.json()); // Parse the content of the request
 
 app.use('/api/stuff', stuffRoutes);
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
